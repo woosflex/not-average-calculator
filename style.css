@@ -1,5 +1,95 @@
+
+
+.doto-num {
+  font-family: "Doto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "ROND" 0;
+}
+
 * {
     padding: 0;
     margin: 0;
 }
 
+#hero-title {
+    text-align: center;
+    padding: 1rem;
+    font-size: 2.5rem;
+}
+
+
+#calculator {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 4%;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem;
+    font-size: 2.5rem;
+    width: fit-content;
+    margin: auto;
+}
+
+#display {
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    width: 100%;
+    height: 5.5rem;
+    text-align: end;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#input {
+    font-size: 1.5rem;
+}
+
+#calc-body {
+    display: flex;
+    gap: 1rem;
+}
+
+#numpad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    grid-template-rows: repeat(4, 1fr);
+    align-items: center;
+}
+
+.num {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    width: 4rem;
+    line-height: 1;
+    border: 1px solid black;
+    border-radius: 0.3rem;
+}
+
+#operators {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1rem;
+    align-items: center;
+}
+
+#operators .num:first-child {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 100%;
+}
+
+#operators .num:nth-child(4) {
+    grid-row-start: 3;
+    grid-row-end: 5;
+    height: 100%;
+}

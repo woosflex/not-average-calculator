@@ -4,34 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Not-Average-Calculator</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
+  <body class="doto-num">
     <header><h1 id="hero-title">Not-Average-Calculator</h1></header>
     <div id="calculator">
-      <div id="display">2342</div>
+      <div id="display">
+        <div id="input"></div>
+        <div id="result"></div>
+      </div>
       <div id="calc-body">
         <div id="numpad">
-          <div  class="buttons">7</div>
-          <div  class="buttons">8</div>
-          <div  class="buttons">9</div>
-          <div  class="buttons">4</div>
-          <div  class="buttons">5</div>
-          <div  class="buttons">6</div>
-          <div  class="buttons">1</div>
-          <div  class="buttons">2</div>
-          <div  class="buttons">3</div>
-          <div  class="buttons">0</div>
-          <div  class="buttons">00</div>
-          <div  class="buttons">.</div>
+          <div class="num">7</div>
+          <div class="num">8</div>
+          <div class="num">9</div>
+          <div class="num">4</div>
+          <div class="num">5</div>
+          <div class="num">6</div>
+          <div class="num">1</div>
+          <div class="num">2</div>
+          <div class="num">3</div>
+          <div class="num">0</div>
+          <div class="num">00</div>
+          <div class="num">.</div>
         </div>
         <div id="operators">
-            <div>Clear</div>
-            <div>x</div>
-            <div>/</div>
-            <div>-</div>
-            <div>+</div>
-            <div>=</div>
+          <div class="num">AC</div>
+          <div class="num">/</div>
+          <div class="num">x</div>
+          <div class="num">+</div>
+          <div class="num">-</div>
+          <div class="num">=</div>
         </div>
       </div>
     </div>
