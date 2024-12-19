@@ -51,7 +51,7 @@ class Calculator {
       default:
         return;
     }
-    this.currentOperand = result;
+    this.currentOperand = Math.round(result * 1000) / 1000;
     this.operation = undefined;
     this.previousOperand = "";
   }
@@ -142,4 +142,17 @@ deleteKey.addEventListener("click", (key) => {
   calculator.updateDisplay();
 });
 
-const e = KeyboardEvent()
+const validOperators = ["+", "-", "*", "/"];
+
+document.addEventListener("keydown", (e) => {
+  if (!isNaN(e.key) || e.key === ".") {
+    calculator.appendNumber(e.key);
+  } else if (e.key === "Backspace") {
+    calculator.delete();
+  } else if (e.key === "=" || e.key === "Enter") {
+    calculator.compute();
+  } else if (validOperators.includes(e.key)) {
+    calculator.chooseOperation(e.key);
+  }
+  calculator.updateDisplay();
+});
