@@ -1,81 +1,145 @@
+class Calculator {
+  constructor(previousOperand, currentOperand) {
+    this.previousOperandTextElement = previousOperand;
+    this.currentOperandTextElement = currentOperand;
+    this.clear();
+  }
+
+  clear() {
+    this.currentOperand = "";
+    this.previousOperand = "";
+    this.operation = undefined;
+  }
+
+  delete() {
+    this.currentOperand = this.currentOperand.toString().slice(0, -1);
+  }
+
+  appendNumber(number) {
+    if (number === "." && this.currentOperand.includes(".")) return;
+    this.currentOperand = this.currentOperand.toString() + number.toString();
+  }
+
+  chooseOperation(operation) {
+    if (this.currentOperand === "") return;
+    if (this.previousOperand != "") {
+      this.compute();
+    }
+    this.operation = operation;
+    this.previousOperand = this.currentOperand;
+    this.currentOperand = "";
+  }
+
+  compute() {
+    let result;
+    const prev = parseFloat(this.previousOperand);
+    const current = parseFloat(this.currentOperand);
+    if (isNaN(prev) || isNaN(current)) return;
+    switch (this.operation) {
+      case "+":
+        result = add(prev, current);
+        break;
+      case "-":
+        result = subtract(prev, current);
+        break;
+      case "x":
+        result = multiply(prev, current);
+        break;
+      case "/":
+        result = divide(prev, current);
+        break;
+      default:
+        return;
+    }
+    this.currentOperand = result;
+    this.operation = undefined;
+    this.previousOperand = "";
+  }
+
+  updateDisplay() {
+    this.currentOperandTextElement.innerText = this.currentOperand;
+    if (this.operation != null) {
+      this.previousOperandTextElement.innerText = `${this.previousOperand} ${this.operation}`;
+    } else {
+      this.previousOperandTextElement.innerText = this.previousOperand;
+    }
+  }
+}
+
 // Calculation functions
 const add = (a, b) => {
-    return a + b;
-}
+  return a + b;
+};
 
 const subtract = (a, b) => {
-    return a - b;
-}
+  return a - b;
+};
 
 const multiply = (a, b) => {
-    return a * b;
-}
+  return a * b;
+};
 
 const divide = (a, b) => {
-    if (b == 0) {
-        return "NOPE!"
-    }
-    return a / b;
-}
+  if (b == 0) {
+    return "NOPE!";
+  }
+  return a / b;
+};
 
 const power = (a, b) => {
-    return Math.pow(a, b);
-}
+  return Math.pow(a, b);
+};
 
 const fractal = (a) => {
-    if (a == 0) {
-        return 1;
-    }
-    return a * fractal(a - 1);
-}
+  if (a == 0) {
+    return 1;
+  }
+  return a * fractal(a - 1);
+};
 
 const log = (a) => {
-    return Math.log10(a)
-}
+  return Math.log10(a);
+};
 
-// Calculator operation
+// Calculator Logic
 
-let num1 = 0;
-let num2 = 0;
-let operator = "";
+const numKeys = document.querySelectorAll("[data-number]");
+const opKeys = document.querySelectorAll("[data-operator]");
+const equalKey = document.querySelector("[data-equal]");
+const clearKey = document.querySelector("[data-clear]");
+const deleteKey = document.querySelector("[data-delete]");
+const previousOperand = document.querySelector("[data-previous-operand]");
+const currentOperand = document.querySelector("[data-current-operand]");
 
-const operate = (a, b = 0, operator) => {
-    let ans = 0;
-    if (operator == "plus") {
-        ans = add(a, b);
-    }
-    else if (operator == "minus") {
-        ans = subtract(a, b);
-    }
-    else if (operator == "multiply") {
-        ans = multiply(a, b);
-    }
-    else if (operator == "divide") {
-        ans = divide(a, b);
-    }
-    else if (operator == "expo") {
-        ans = power(a, b);
-    }
-    else if (operator == "square") {
-        ans = power(a, 2);
-    }
-    else if (operator === "cube") {
-        ans = power(a, 3);
-    }
-    else if (operator == "sqrt") {
-        ans = power(a, 1/2)
-    }
-    else if (operator == "cbrt") {
-        ans = power(a, 1/3)
-    }
-    else if (operator = "nroot") {
-        ans = power(a, 1/b);
-    }
-    else if (operator == "log") {
-        ans = log(a);
-    }
-    else if (operator == "antilog") {
-        ans = power(10, a);
-    }
-    return ans;
-}
+const calculator = new Calculator(previousOperand, currentOperand);
+
+numKeys.forEach((numKey) => {
+  numKey.addEventListener("click", () => {
+    calculator.appendNumber(numKey.innerText);
+    calculator.updateDisplay();
+  });
+});
+
+opKeys.forEach((opKey) => {
+  opKey.addEventListener("click", () => {
+    calculator.chooseOperation(opKey.innerText);
+    calculator.updateDisplay();
+  });
+});
+
+clearKey.addEventListener("click", () => {
+  calculator.clear();
+  calculator.updateDisplay();
+});
+
+equalKey.addEventListener("click", (key) => {
+  calculator.compute();
+  calculator.updateDisplay();
+});
+
+deleteKey.addEventListener("click", (key) => {
+  calculator.delete();
+  calculator.updateDisplay();
+});
+
+const e = KeyboardEvent()

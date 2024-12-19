@@ -12,35 +12,36 @@
       rel="stylesheet"
     />
   </head>
-  <body class="doto-num">
+  <body>
     <header><h1 id="hero-title">Not-Average-Calculator</h1></header>
     <div id="calculator">
       <div id="display">
-        <div id="input"></div>
-        <div id="result"></div>
+        <div data-previous-operand id="input"></div>
+        <div data-current-operand id="result"></div>
       </div>
       <div id="calc-body">
         <div id="numpad">
-          <div class="num">7</div>
-          <div class="num">8</div>
-          <div class="num">9</div>
-          <div class="num">4</div>
-          <div class="num">5</div>
-          <div class="num">6</div>
-          <div class="num">1</div>
-          <div class="num">2</div>
-          <div class="num">3</div>
-          <div class="num">0</div>
-          <div class="num">00</div>
-          <div class="num">.</div>
+          <div data-number class="num">7</div>
+          <div data-number class="num">8</div>
+          <div data-number class="num">9</div>
+          <div data-number class="num">4</div>
+          <div data-number class="num">5</div>
+          <div data-number class="num">6</div>
+          <div data-number class="num">1</div>
+          <div data-number class="num">2</div>
+          <div data-number class="num">3</div>
+          <div data-number class="num">0</div>
+          <div data-number class="num">00</div>
+          <div data-number class="num point">.</div>
         </div>
         <div id="operators">
-          <div class="num">AC</div>
-          <div class="num">/</div>
-          <div class="num">x</div>
-          <div class="num">+</div>
-          <div class="num">-</div>
-          <div class="num">=</div>
+          <div data-clear class="op clear">AC</div>
+          <div data-delete class="op">C</div>
+          <div data-operator class="op">/</div>
+          <div data-operator class="op">+</div>
+          <div data-operator class="op">x</div>
+          <div data-operator class="op">-</div>
+          <div data-equal class="op">=</div>
         </div>
       </div>
     </div>
