@@ -152,7 +152,11 @@ document.addEventListener("keydown", (e) => {
   } else if (e.key === "=" || e.key === "Enter") {
     calculator.compute();
   } else if (validOperators.includes(e.key)) {
-    calculator.chooseOperation(e.key);
+    if (e.key === "*") {
+      calculator.chooseOperation("x");
+    } else {
+      calculator.chooseOperation(e.key);
+    }
   }
   calculator.updateDisplay();
 });
